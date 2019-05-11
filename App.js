@@ -1,9 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import { NativeRouter, Route, Link } from "react-router-native";
 import Nav from './src/navs/Nav';
 import GraphContainer from './src/graph/GraphContainer';
 import TaskContainer from './src/tasks/TaskContainer';
+import ScrapBookContainer from './src/scrapbook/ScrapBookContainer';
+import backDrop from './assets/background.png';
 
 export default class App extends React.Component {
 
@@ -26,29 +28,34 @@ export default class App extends React.Component {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-around'
+      },
+      backDrop: {
+        flex: 1,
+        zIndex: -15,
       }
     });
 
     return (
       <NativeRouter>
         <View style={styles.container}>
-
-          <View style={styles.body}>
-            <Route exact path="/" component={GraphContainer} />
-            <Route path="/tasks" component={TaskContainer} />
-          </View>
-
-          <View style={styles.navBar}>
-            <Link to="/">
-              <Nav/>
-            </Link>
-            <Link to="/tasks">
-              <Nav/>
-            </Link>
-            <Link to="/scrapbook">
-              <Nav/>
-            </Link>
-          </View>
+          <ImageBackground source={backDrop} style={{width: '100%', height: '100%'}}>
+            <View style={styles.body}>
+              <Route exact path="/" component={GraphContainer} />
+              <Route path="/tasks" component={TaskContainer} />
+              <Route path="/scrapbook" component={ScrapBookContainer} />
+            </View>
+            <View style={styles.navBar}>
+              <Link to="/">
+                <Nav/>
+              </Link>
+              <Link to="/tasks">
+                <Nav/>
+              </Link>
+              <Link to="/scrapbook">
+                <Nav/>
+              </Link>
+            </View>
+          </ImageBackground>
         </View>
       </NativeRouter>
     );
