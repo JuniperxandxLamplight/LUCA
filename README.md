@@ -33,7 +33,8 @@ _task completed_
 
 ## Redux Store Format
 
-{
+````Javascript
+state = {
   profile: {
     created: (boolean of if user has set profile yet)
     name: (name),
@@ -57,6 +58,7 @@ _task completed_
     ]
   }
 }
+````
 
 <!-- ### Unforseen Issues
 _Webpack configuring took longer than expected; getting everything working perfectly in that might be a longer process than coding any individual feature_
