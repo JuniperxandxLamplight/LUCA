@@ -1,12 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {connect} from 'react-redux';
 
-function UpkeepWelcome(){
+function UpkeepWelcome(props){
   return(
     <View>
-      <Text>I'm the welcome!</Text>
+      <Text>Hello {props.state.profile.name}! How are you doing today?</Text>
     </View>
   );
 }
 
-export default UpkeepWelcome;
+const mapStateToProps = state => {
+  return{
+    state: state
+  }
+}
+
+export default connect(mapStateToProps)(UpkeepWelcome);
