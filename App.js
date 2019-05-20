@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 import { NativeRouter, Route, Link } from "react-router-native";
+import {rootReducer} from './src/constants/RootReducer';
 import Nav from './src/navs/Nav';
 import GraphContainer from './src/graph/GraphContainer';
 import TaskContainer from './src/tasks/TaskContainer';
@@ -9,7 +12,15 @@ import backDrop from './assets/background.png';
 
 export default class App extends React.Component {
 
+
   render() {
+
+    const store = createStore(rootReducer);
+
+    let unsubscribe = store.subscribe(() =>
+      console.log(store.getState())
+    );
+
     const styles = StyleSheet.create({
       container: {
         flex: 1,
@@ -37,26 +48,28 @@ export default class App extends React.Component {
 
     return (
       <NativeRouter>
-        <View style={styles.container}>
-          <ImageBackground source={backDrop} style={{width: '100%', height: '100%'}}>
-            <View style={styles.body}>
-              <Route exact path="/" component={GraphContainer} />
-              <Route path="/tasks" component={TaskContainer} />
-              <Route path="/scrapbook" component={ScrapBookContainer} />
-            </View>
-            <View style={styles.navBar}>
-              <Link to="/">
-                <Nav/>
-              </Link>
-              <Link to="/tasks">
-                <Nav/>
-              </Link>
-              <Link to="/scrapbook">
-                <Nav/>
-              </Link>
-            </View>
-          </ImageBackground>
-        </View>
+        <Provider store={store}>
+          <View style={styles.container}>
+            <ImageBackground source={backDrop} style={{width: '100%', height: '100%'}}>
+              <View style={styles.body}>
+                <Route exact path="/" component={GraphContainer} />
+                <Route path="/tasks" component={TaskContainer} />
+                <Route path="/scrapbook" component={ScrapBookContainer} />
+              </View>
+              <View style={styles.navBar}>
+                <Link to="/">
+                  <Nav/>
+                </Link>
+                <Link to="/tasks">
+                  <Nav/>
+                </Link>
+                <Link to="/scrapbook">
+                  <Nav/>
+                </Link>
+              </View>
+            </ImageBackground>
+          </View>
+        </Provider>
       </NativeRouter>
     );
   }

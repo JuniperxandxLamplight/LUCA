@@ -10,7 +10,6 @@ function GraphContainer(){
   });
   return(
     <View style={styles.container}>
-      <Text>I'm the grid container!</Text>
       <GraphGrid/>
     </View>
   );

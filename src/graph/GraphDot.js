@@ -1,29 +1,40 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import Moment from 'moment';
 
-function GraphDot(){
+function GraphDot(props){
+  const now = new Moment();
+  const days = props.date.diff(now, 'day');
 
-  const widthPercent = Dimensions.get('window').width / 100;
   const heightPercent = (Dimensions.get('window').height * .9) / 100;
-  const height = heightPercent * 50
-  const width = widthPercent * 50
+  const widthPercent = Dimensions.get('window').width / 100;
+  const width = 30 + days;
+  const height = 30 + days;
+  const top = (heightPercent * props.y) - height;
+  const left = (widthPercent * props.x) - width;
+  const opacity = (100 + (days * 3)) / 100;
 
   const styles = StyleSheet.create({
     dot:{
-      flex: 1,
+      height: height,
+      width: width,
       position: 'absolute',
-      top: height,
-      left: width,
-      borderColor: 'green',
-      borderWidth: 1
+      top: top,
+      left: left,
+      opacity: opacity,
+
+      backgroundColor: 'green',
+      borderRadius: 100,
     }
   })
 
   return(
     <View>
-      <Text style={styles.dot}>I'm a dot!</Text>
+      <View style={styles.dot}></View>
     </View>
   );
 }
+
+
 
 export default GraphDot;
