@@ -6,11 +6,15 @@ const test3 = new Moment('2019-05-16', 'YYYY-MM-DD');
 const test4 = new Moment('2019-05-10', 'YYYY-MM-DD');
 const test5 = new Moment('2019-05-01', 'YYYY-MM-DD');
 
+const pinTest = new Moment('2019-05-19', 'YYYY-MM-DD');
+
 export const initialState = {
   profile: {
     created: true,
     name: 'Aurora',
     favColor: '#008c02',
+    pinTime: 10,
+    lastPin: pinTest
   },
   pins: [
     {
