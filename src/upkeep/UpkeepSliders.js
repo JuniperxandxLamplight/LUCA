@@ -1,8 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import Slider from 'react-native-slider';
 
 function UpkeepSliders(){
+
+  let _mood = null;
+  let _energy = null;
+
+  function testClick(){
+    console.log(_mood);
+  }
+
   const styles = StyleSheet.create({
     slider: {
       width: 200,
@@ -19,7 +27,9 @@ function UpkeepSliders(){
         minimumTrackTintColor="#FFFFFF"
         maximumTrackTintColor="#000000"
         thumbTintColor="#FFFFFF"
+        ref={(value) => {_mood = value}}
       />
+      <Button onPress={testClick} title="Button Button"/>
     </View>
   );
 }
