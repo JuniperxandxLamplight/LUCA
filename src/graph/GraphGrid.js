@@ -9,13 +9,13 @@ function GraphGrid(props){
   return(
     <View>
       <GraphView/>
-      {props.state.pins.map((dot, index) =>
+      {Object.keys(props.state.pins).map((dot, index) =>
         <GraphDot
           key={index}
-          id={dot.id}
-          date={dot.date}
-          x={dot.x}
-          y={dot.y}
+          id={props.state.pins[dot].id}
+          date={props.state.pins[dot].date}
+          x={props.state.pins[dot].x}
+          y={props.state.pins[dot].y}
         />
       )}
     </View>

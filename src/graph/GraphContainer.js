@@ -10,11 +10,8 @@ function GraphContainer(props){
   let graphShowing;
   const now = new Moment();
   const timeSinceLastPin = props.state.profile.lastPin.diff(now, 'hours');
-  console.log(now.hour());
-  console.log(props.state.profile.pinTime);
-  console.log(timeSinceLastPin);
 
-  if ((now.hour() > props.state.profile.pinTime) && (timeSinceLastPin < -8)){
+  if ((now.hour() > props.state.profile.pinTime && timeSinceLastPin < -8) || (timeSinceLastPin < -24)){
     graphShowing = <UpkeepContainer/>
   } else {
     graphShowing = <GraphGrid/>

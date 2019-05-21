@@ -16,45 +16,45 @@ export const initialState = {
     pinTime: 10,
     lastPin: pinTest
   },
-  pins: [
-    {
+  pins: {
+    testId:{
       x: 45,
       y: 45,
       date: test,
       id: 'testId'
     },
-    {
+    testId2:{
       x: 23,
       y: 56,
       date: test2,
       id: 'testId2'
     },
-    {
+    testId3:{
       x: 34,
       y: 34,
       date: test3,
       id: 'testId3'
     },
-    {
+    testId4:{
       x: 15,
       y: 78,
       date: test4,
       id: 'testId4'
     },
-    {
+    testId5:{
       x: 98,
       y: 1,
       date: test5,
       id: 'testId5'
     },
-  ],
-  tasks: [
-    {
+  },
+  tasks: {
+    CallMom: {
       name: 'Call Mom',
       frequency: 'high',
       energy: 'high',
       set: test,
       reminders: 5
     }
-  ]
+  }
 }

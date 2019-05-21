@@ -1,14 +1,27 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import {connect} from 'react-redux';
+import Moment from 'moment';
+import {setPin} from './../constants/Actions';
+import {v4} from 'uuid';
 import Slider from 'react-native-slider';
 
-function UpkeepSliders(){
+function UpkeepSliders(props){
 
-  let _mood = null;
-  let _energy = null;
+  let energy = 50;
+  let mood = 50;
 
-  function testClick(){
-    console.log(_mood);
+  function energySet(value){
+    energy = Math.floor(value);
+  }
+  function moodSet(value){
+    mood = Math.floor(value);
+  }
+
+  function handleSetPin(){
+    const now = new Moment();
+    const id = v4()
+    props.dispatch(setPin(energy, mood, now, id));
   }
 
   const styles = StyleSheet.create({
@@ -19,19 +32,37 @@ function UpkeepSliders(){
   })
   return(
     <View>
+      <Text>Energy</Text>
       <Slider
         style={styles.slider}
         value={50}
+        onValueChange={value => energySet(value)}
         minimumValue={1}
         maximumValue={100}
         minimumTrackTintColor="#FFFFFF"
         maximumTrackTintColor="#000000"
         thumbTintColor="#FFFFFF"
-        ref={(value) => {_mood = value}}
       />
-      <Button onPress={testClick} title="Button Button"/>
+      <Text>Mood</Text>
+      <Slider
+        style={styles.slider}
+        value={50}
+        onValueChange={value => moodSet(value)}
+        minimumValue={1}
+        maximumValue={100}
+        minimumTrackTintColor="#FFFFFF"
+        maximumTrackTintColor="#000000"
+        thumbTintColor="#FFFFFF"
+        />
+      <Button onPress={handleSetPin} title="Kinda like this"/>
     </View>
   );
 }
 
-export default UpkeepSliders;
+const mapStateToProps = state => {
+  return{
+    state: state
+  }
+}
+
+export default connect(mapStateToProps)(UpkeepSliders);

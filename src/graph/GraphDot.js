@@ -4,6 +4,8 @@ import Moment from 'moment';
 import rose from './../../assets/rose.png';
 
 function GraphDot(props){
+  console.log(props);
+
   const now = new Moment();
   const days = props.date.diff(now, 'day');
 
