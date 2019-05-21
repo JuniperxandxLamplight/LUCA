@@ -20,8 +20,9 @@ function UpkeepSliders(props){
 
   function handleSetPin(){
     const now = new Moment();
-    const id = v4()
+    const id = v4();
     props.dispatch(setPin(energy, mood, now, id));
+    // props.confirmationShow();
   }
 
   const styles = StyleSheet.create({
@@ -54,7 +55,7 @@ function UpkeepSliders(props){
         maximumTrackTintColor="#000000"
         thumbTintColor="#FFFFFF"
         />
-      <Button onPress={handleSetPin} title="Kinda like this"/>
+      <Button onPress={handleSetPin} title="Done"/>
     </View>
   );
 }

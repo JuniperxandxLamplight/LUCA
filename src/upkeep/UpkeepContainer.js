@@ -16,7 +16,7 @@ function UpkeepContainer(){
     <View>
       {confirmation}
       <UpkeepWelcome/>
-      <UpkeepSliders/>
+      <UpkeepSliders confirmationShow={confirmationShow}/>
     </View>
   );
 }

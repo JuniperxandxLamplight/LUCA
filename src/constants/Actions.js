@@ -7,3 +7,13 @@ export const setPin = (x, y, date, id) => ({
   date: date,
   id: id
 })
+
+export const addTask = (formattedName, name, frequency, energy, set, reminders) => ({
+  type: types.ADD_TASK,
+  formattedName: formattedName,
+  name: name,
+  frequency: frequency,
+  energy: energy,
+  set: set,
+  reminders: reminders
+})
