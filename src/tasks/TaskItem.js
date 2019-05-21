@@ -6,7 +6,7 @@ class TaskItem extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      detailsOpen: true
+      detailsOpen: false
     }
     this.handleOpenDetails = this.handleOpenDetails.bind(this)
   }
