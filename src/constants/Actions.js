@@ -16,7 +16,7 @@ export const addTask = (id, name, frequency, energy, set, reminders) => ({
   energy: energy,
   set: set,
   reminders: reminders
-})
+});
 
 export const editTask = (id, name, frequency, energy) => ({
   type: types.EDIT_TASK,
@@ -24,4 +24,9 @@ export const editTask = (id, name, frequency, energy) => ({
   name: name,
   frequency: frequency,
   energy: energy
-})
+});
+
+export const deleteTask = (id) => ({
+  type: types.DELETE_TASK,
+  id: id
+});

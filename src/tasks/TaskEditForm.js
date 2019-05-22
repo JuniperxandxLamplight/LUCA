@@ -7,8 +7,8 @@ class TaskEditForm extends React.Component{
     super(props);
     this.state = {
       name: this.props.taskName,
-      frequency: this.props.frequency,
-      energy: this.props.energy
+      frequency: this.props.taskFrequency,
+      energy: this.props.taskEnergy
     }
     this.nameSet = this.nameSet.bind(this);
     this.frequencySet = this.frequencySet.bind(this);
@@ -37,6 +37,7 @@ class TaskEditForm extends React.Component{
   }
 
   render(){
+    console.log(this.props);
     return(
       <View>
         <Text>Name</Text>

@@ -14,9 +14,16 @@ const tasksReducer = (state = initialState.tasks, action) => {
         energy: action.energy,
         set: action.set,
         reminders: action.reminders,
-        };
+        id: action.id
+      }
 
-      console.log('this is add task state');
+      console.log('actions');
+      console.log(action.name);
+      console.log(action.frequency);
+      console.log(action.energy);
+      console.log(action.set);
+      console.log(action.reminders);
+      console.log('new state in add  reducer');
       console.log(newState);
 
       return newState;
@@ -27,8 +34,13 @@ const tasksReducer = (state = initialState.tasks, action) => {
       newState[action.id].frequency = action.frequency;
       newState[action.id].energy = action.energy;
 
-      console.log('this is edited task state');
-      console.log(newState);
+      return newState;
+    case types.DELETE_TASK:
+      newState = Object.assign({}, state);
+
+      delete newState[action.id];
+
+      console.log('state reducer reached');
 
       return newState;
     default:

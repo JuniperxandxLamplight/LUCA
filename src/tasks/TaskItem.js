@@ -33,6 +33,7 @@ class TaskItem extends React.Component{
             <Text>Frequency: {this.props.frequency}</Text>
             <Text>Energy: {this.props.energy}</Text>
             <Text>Reminders to Date: {this.props.reminders}</Text>
+            <Text>Id: {this.props.id}</Text>
             <Button onPress={this.handleSendEdit} title="Edit" />
           </View>
         }

@@ -21,12 +21,10 @@ export default class TaskContainer extends React.Component{
   }
 
   handleCloseEditor(){
-    console.log('Ive been closed');
     this.setState({
       isEditing: false,
       isAdding: false
     });
-    console.log(this.state);
   }
   handleOpenEditor(id){
     this.setState({
@@ -43,13 +41,11 @@ export default class TaskContainer extends React.Component{
     })
   }
   handleOpenAddTask(id){
-    console.log('got to container open add function');
     this.setState({
       isEditing: false,
       isAdding: true
     });
     addTaskView = <TaskAdd taskId={id} onCloseAddTask={this.handleCloseAddTask} />
-    console.log(addTaskView);
   }
 
   render(){

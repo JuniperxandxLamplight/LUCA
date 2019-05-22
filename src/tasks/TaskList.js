@@ -8,9 +8,10 @@ import {addTask} from './../constants/Actions';
 
 
 function TaskList(props){
+  console.log('task list props');
+  console.log(props);
 
   function openAddTask(){
-    console.log('before sending open function');
     let newTaskSet = new Moment();
     let newTaskId = v4();
     props.dispatch(addTask(newTaskId, 'New Task', 'medium', 'medium', newTaskSet, 0));
