@@ -4,14 +4,13 @@ import {connect} from 'react-redux';
 import TaskEditForm from './TaskEditForm';
 import {editTask} from './../constants/Actions';
 
-function TaskEdit(props){
-  console.log(props);
+function TaskAdd(props){
 
   function gatherDataFromForm(name, frequency, energy, id){
     console.log('gather data works');
     console.log([name, frequency, energy, id]);
     props.dispatch(editTask(id, name, frequency, energy));
-    props.onCloseEditor();
+    props.onCloseAddTask();
     console.log('got to the end of gather');
   }
 
@@ -34,4 +33,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(TaskEdit);
+export default connect(mapStateToProps)(TaskAdd);

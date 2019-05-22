@@ -49,12 +49,13 @@ export const initialState = {
     },
   },
   tasks: {
-    CallMom: {
+    taskId: {
       name: 'Call Mom',
       frequency: 'high',
       energy: 'high',
       set: test,
-      reminders: 5
+      reminders: 5,
+      id: 'taskId'
     }
   }
 }

@@ -9,6 +9,7 @@ class TaskItem extends React.Component{
       detailsOpen: false
     }
     this.handleOpenDetails = this.handleOpenDetails.bind(this)
+    this.handleSendEdit = this.handleSendEdit.bind(this)
   }
 
   handleOpenDetails(){
@@ -17,6 +18,9 @@ class TaskItem extends React.Component{
     } else {
       this.setState({detailsOpen: true});
     }
+  }
+  handleSendEdit(){
+    this.props.onOpenEditor(this.props.id);
   }
 
 
@@ -29,7 +33,7 @@ class TaskItem extends React.Component{
             <Text>Frequency: {this.props.frequency}</Text>
             <Text>Energy: {this.props.energy}</Text>
             <Text>Reminders to Date: {this.props.reminders}</Text>
-            <Button onPress={this.handleOpenDetails} title="Edit" />
+            <Button onPress={this.handleSendEdit} title="Edit" />
           </View>
         }
       </View>

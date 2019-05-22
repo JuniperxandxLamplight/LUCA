@@ -1,9 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import {connect} from 'react-redux';
+import Moment from 'moment';
+import {v4} from 'uuid';
 import TaskItem from './TaskItem';
+import {addTask} from './../constants/Actions';
+
 
 function TaskList(props){
+
+  function openAddTask(){
+    console.log('before sending open function');
+    let newTaskSet = new Moment();
+    let newTaskId = v4();
+    props.dispatch(addTask(newTaskId, 'New Task', 'medium', 'medium', newTaskSet, 0));
+    props.onOpenAddTask(newTaskId);
+  }
 
   return(
     <View>
@@ -15,8 +27,11 @@ function TaskList(props){
           energy={props.state.tasks[task].energy}
           set={props.state.tasks[task].set}
           reminders={props.state.tasks[task].reminders}
+          id={props.state.tasks[task].id}
+          onOpenEditor={props.onOpenEditor}
         />
       )}
+      <Button onPress={openAddTask} title="Add Task"/>
     </View>
   );
 }

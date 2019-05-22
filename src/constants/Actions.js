@@ -8,12 +8,20 @@ export const setPin = (x, y, date, id) => ({
   id: id
 })
 
-export const addTask = (formattedName, name, frequency, energy, set, reminders) => ({
+export const addTask = (id, name, frequency, energy, set, reminders) => ({
   type: types.ADD_TASK,
-  formattedName: formattedName,
+  id: id,
   name: name,
   frequency: frequency,
   energy: energy,
   set: set,
   reminders: reminders
+})
+
+export const editTask = (id, name, frequency, energy) => ({
+  type: types.EDIT_TASK,
+  id: id,
+  name: name,
+  frequency: frequency,
+  energy: energy
 })
