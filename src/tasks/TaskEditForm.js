@@ -1,61 +1,70 @@
 import React from 'react';
 import { StyleSheet, Text, View, Picker, TextInput, Button } from 'react-native';
 
-function TaskEditForm(props){
-  console.log(props);
+class TaskEditForm extends React.Component{
 
-  let name = props.taskName;
-  let frequency = props.taskFreqency;
-  let energy = props.taskEnergy;
-
-  console.log(name);
-  console.log(frequency);
-  console.log(energy);
-
-  function nameSet(value){
-    name = value;
-  }
-  function frequencySet(value){
-    console.log(value);
-    console.log(frequency);
-    frequency = value;
-    console.log(frequency);
-  }
-  function energySet(value){
-    energy = value;
+  constructor(props){
+    super(props);
+    this.state = {
+      name: this.props.taskName,
+      frequency: this.props.frequency,
+      energy: this.props.energy
+    }
+    this.nameSet = this.nameSet.bind(this);
+    this.frequencySet = this.frequencySet.bind(this);
+    this.energySet = this.energySet.bind(this);
+    this.sendData = this.sendData.bind(this);
   }
 
-  function sendData(){
-    props.sendData(name, frequency, energy, props.taskId);
+  nameSet(value){
+    newState = Object.assign({}, this.state);
+    newState.name = value;
+    this.setState(newState);
+  }
+  frequencySet(value){
+    newState = Object.assign({}, this.state);
+    newState.frequency = value;
+    this.setState(newState);
+  }
+  energySet(value){
+    newState = Object.assign({}, this.state);
+    newState.energy = value;
+    this.setState(newState);
   }
 
-  return(
-    <View>
-      <Text>Name</Text>
-      <TextInput
-        placeholder="Name of Task"
-        value={name}
-        onChangeText={value => nameSet(value)}
-      />
-      <Text>Frequency of Reminders</Text>
-      <Picker
-        selectedValue={frequency}
-        onValueChange={value => frequencySet(value)}>
-        <Picker.Item label="High" value="high" />
-        <Picker.Item label="Medium" value="medium" />
-        <Picker.Item label="Low" value="low" />
-      </Picker>
-      <Text>Energy Required</Text>
-      <Picker
-        selectedValue={energy}
-        onValueChange={value => energySet(value)}>
-        <Picker.Item label="High" value="high" />
-        <Picker.Item label="Medium" value="medium" />
-        <Picker.Item label="Low" value="low" />
-      </Picker>
-      <Button onPress={sendData} title="Done"/>
-    </View>
-  );
+  sendData(){
+    this.props.sendData(this.state.name, this.state.frequency, this.state.energy, this.props.taskId);
+  }
+
+  render(){
+    return(
+      <View>
+        <Text>Name</Text>
+        <TextInput
+          value={this.state.name}
+          placeholder="Name of Task"
+          onChangeText={value => this.nameSet(value)}
+          />
+        <Text>Frequency of Reminders</Text>
+        <Picker
+          selectedValue={this.state.frequency}
+          onValueChange={value => this.frequencySet(value)}>
+          <Picker.Item label="High" value="high" />
+          <Picker.Item label="Medium" value="medium" />
+          <Picker.Item label="Low" value="low" />
+        </Picker>
+        <Text>Energy Required</Text>
+        <Picker
+          selectedValue={this.state.energy}
+          onValueChange={value => this.energySet(value)}>
+          <Picker.Item label="High" value="high" />
+          <Picker.Item label="Medium" value="medium" />
+          <Picker.Item label="Low" value="low" />
+        </Picker>
+        <Button onPress={this.sendData} title="Done"/>
+      </View>
+    );
+  }
 }
 
 export default TaskEditForm;
