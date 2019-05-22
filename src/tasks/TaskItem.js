@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import {body} from './../constants/Mixins';
 
 class TaskItem extends React.Component{
 
@@ -25,15 +26,20 @@ class TaskItem extends React.Component{
 
 
   render(){
+
+    const styles = StyleSheet.create({
+      container: {
+        ...body
+      }
+    })
     return(
-      <View>
+      <View >
         <Text onPress={this.handleOpenDetails} style={{fontSize: 30}}>{this.props.name}</Text>
         {this.state.detailsOpen &&
           <View>
-            <Text>Frequency: {this.props.frequency}</Text>
+            <Text style={styles.container}>Frequency: {this.props.frequency}</Text>
             <Text>Energy: {this.props.energy}</Text>
             <Text>Reminders to Date: {this.props.reminders}</Text>
-            <Text>Id: {this.props.id}</Text>
             <Button onPress={this.handleSendEdit} title="Edit" />
           </View>
         }

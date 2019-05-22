@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+import {Font} from 'expo'
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import { NativeRouter, Route, Link } from "react-router-native";
@@ -11,6 +12,17 @@ import ScrapBookContainer from './src/scrapbook/ScrapBookContainer';
 import backDrop from './assets/background.png';
 
 export default class App extends React.Component {
+  state = {
+    fontLoaded: false
+  };
+
+  async componentDidMount(){
+    await Font.loadAsync({
+      'quicksand': require('./assets/fonts/Quicksand-Regular.ttf')
+    })
+
+    this.setState({fontLoaded: true});
+  }
 
 
   render() {
@@ -24,6 +36,7 @@ export default class App extends React.Component {
     const styles = StyleSheet.create({
       container: {
         flex: 1,
+        fontFamily: 'quicksand',
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
@@ -49,26 +62,30 @@ export default class App extends React.Component {
     return (
       <NativeRouter>
         <Provider store={store}>
-          <View style={styles.container}>
-            <ImageBackground source={backDrop} style={{width: '100%', height: '100%'}}>
-              <View style={styles.body}>
-                <Route exact path="/" component={GraphContainer} />
-                <Route path="/tasks" component={TaskContainer} />
-                <Route path="/scrapbook" component={ScrapBookContainer} />
+          {
+            this.state.fontLoaded ? (
+              <View style={styles.container}>
+                <ImageBackground source={backDrop} style={{width: '100%', height: '100%'}}>
+                  <View style={styles.body}>
+                    <Route exact path="/" component={GraphContainer} />
+                    <Route path="/tasks" component={TaskContainer} />
+                    <Route path="/scrapbook" component={ScrapBookContainer} />
+                  </View>
+                  <View style={styles.navBar}>
+                    <Link to="/">
+                      <Nav/>
+                    </Link>
+                    <Link to="/tasks">
+                      <Nav/>
+                    </Link>
+                    <Link to="/scrapbook">
+                      <Nav/>
+                    </Link>
+                  </View>
+                </ImageBackground>
               </View>
-              <View style={styles.navBar}>
-                <Link to="/">
-                  <Nav/>
-                </Link>
-                <Link to="/tasks">
-                  <Nav/>
-                </Link>
-                <Link to="/scrapbook">
-                  <Nav/>
-                </Link>
-              </View>
-            </ImageBackground>
-          </View>
+            ) : null
+          }
         </Provider>
       </NativeRouter>
     );
