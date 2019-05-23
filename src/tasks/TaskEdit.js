@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import {connect} from 'react-redux';
 import TaskEditForm from './TaskEditForm';
 import {editTask, deleteTask} from './../constants/Actions';
-import {body} from './../constants/Mixins';
+import {body, button} from './../constants/Mixins';
 
 
 class TaskEdit extends React.Component{
@@ -44,6 +44,17 @@ class TaskEdit extends React.Component{
     const styles = StyleSheet.create({
       text: {
         ...body
+      },
+      buttonHolderSpecial: {
+        ...button,
+        width: 200,
+        marginTop: 0
+      },
+      buttonHolder: {
+        ...button
+      },
+      deleteConfirm: {
+        marginTop: '45%'
       }
     })
 
@@ -58,15 +69,21 @@ class TaskEdit extends React.Component{
               taskEnergy={this.props.state.tasks[this.props.taskId].energy}
               sendData={this.gatherDataFromForm}
               />
-            <Button color="#914EFF" onPress={this.deleteQuestionToggle} title="Delete This Task" />
+            <View style={styles.buttonHolderSpecial}>
+              <Button color="#914EFF" onPress={this.deleteQuestionToggle} title="Delete This Task" />
+            </View>
           </View>
         }
         {this.state.deleteConfirmation &&
-        <View>
-          <Text style={styles.text}>Are you sure you want to delete this task?</Text>
-          <Button color="#914EFF" onPress={this.deleteTask} title="Yes please" />
-          <Button color="#914EFF" onPress={this.deleteQuestionToggle} title="Actually, no thanks" />
-        </View>}
+          <View style={styles.deleteConfirm}>
+            <Text style={styles.text}>Are you sure you want to delete this task?</Text>
+            <View style={styles.buttonHolder}>
+              <Button color="#914EFF" onPress={this.deleteTask} title="Yes, please" />
+            </View>
+            <View style={styles.buttonHolderSpecial}>
+              <Button color="#914EFF" onPress={this.deleteQuestionToggle} title="Actually, nevermind" />
+            </View>
+          </View>}
         </View>
       );
   }

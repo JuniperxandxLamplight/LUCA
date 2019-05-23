@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Picker, TextInput, Button } from 'react-native';
-import {body} from './../constants/Mixins';
+import {body, button} from './../constants/Mixins';
 
 
 class TaskEditForm extends React.Component{
@@ -43,34 +43,75 @@ class TaskEditForm extends React.Component{
     const styles = StyleSheet.create({
       text: {
         ...body
+      },
+      buttonHolder: {
+        ...button
+      },
+      container: {
+        marginTop: '7%',
+      },
+      input:{
+        ...body,
+        color: 'black',
+        fontSize: 30,
+        width: '80%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: 10,
+        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: "#914EFF",
+        borderRadius: 10,
+        padding: 5
+      },
+      picker: {
+        justifyContent: 'center',
+        width: '80%',
+        height: 100,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: 15,
+        marginBottom: 15,
+        padding: 0,
+        borderWidth: 1,
+        borderColor: "#914EFF",
+        borderRadius: 15,
+        overflow: 'hidden'
       }
     })
 
     return(
-      <View>
+      <View style={styles.container}>
         <Text style={styles.text}>Name</Text>
-        <Text style={styles.text}Input
+        <TextInput
+          style={styles.input}
           value={this.state.name}
           placeholder="Name of Task"
           onChangeText={value => this.nameSet(value)}
           />
         <Text style={styles.text}>Frequency of Reminders</Text>
-        <Picker
-          selectedValue={this.state.frequency}
-          onValueChange={value => this.frequencySet(value)}>
-          <Picker.Item label="High" value="high" />
-          <Picker.Item label="Medium" value="medium" />
-          <Picker.Item label="Low" value="low" />
-        </Picker>
+        <View style={styles.picker}>
+          <Picker
+            selectedValue={this.state.frequency}
+            onValueChange={value => this.frequencySet(value)}>
+            <Picker.Item label="High" value="high" />
+            <Picker.Item label="Medium" value="medium" />
+            <Picker.Item label="Low" value="low" />
+          </Picker>
+        </View>
         <Text style={styles.text}>Energy Required</Text>
-        <Picker
-          selectedValue={this.state.energy}
-          onValueChange={value => this.energySet(value)}>
-          <Picker.Item label="High" value="high" />
-          <Picker.Item label="Medium" value="medium" />
-          <Picker.Item label="Low" value="low" />
-        </Picker>
-        <Button color="#914EFF" onPress={this.sendData} title="Done"/>
+        <View style={styles.picker}>
+          <Picker
+            selectedValue={this.state.energy}
+            onValueChange={value => this.energySet(value)}>
+            <Picker.Item label="High" value="high" />
+            <Picker.Item label="Medium" value="medium" />
+            <Picker.Item label="Low" value="low" />
+          </Picker>
+        </View>
+        <View style={styles.buttonHolder}>
+          <Button color="#914EFF" onPress={this.sendData} title="Done"/>
+        </View>
       </View>
     );
   }
