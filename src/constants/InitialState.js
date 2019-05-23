@@ -5,6 +5,11 @@ const test2 = new Moment('2019-05-19', 'YYYY-MM-DD');
 const test3 = new Moment('2019-05-16', 'YYYY-MM-DD');
 const test4 = new Moment('2019-05-10', 'YYYY-MM-DD');
 const test5 = new Moment('2019-05-01', 'YYYY-MM-DD');
+const test6 = new Moment('2019-05-02', 'YYYY-MM-DD');
+const test7 = new Moment('2019-05-03', 'YYYY-MM-DD');
+const test8 = new Moment('2019-05-13', 'YYYY-MM-DD');
+const test9 = new Moment('2019-05-14', 'YYYY-MM-DD');
+const test10 = new Moment('2019-05-15', 'YYYY-MM-DD');
 
 const pinTest = new Moment('2019-05-19', 'YYYY-MM-DD');
 
@@ -47,74 +52,104 @@ export const initialState = {
       date: test5,
       id: 'testId5'
     },
+    testId6:{
+      x: 15,
+      y: 12,
+      date: test6,
+      id: 'testId6'
+    },
+    testId7:{
+      x: 67,
+      y: 78,
+      date: test7,
+      id: 'testId7'
+    },
+    testId8:{
+      x: 55,
+      y: 61,
+      date: test8,
+      id: 'testId8'
+    },
+    testId9:{
+      x: 86,
+      y: 76,
+      date: test9,
+      id: 'testId9'
+    },
+    testId10:{
+      x: 50,
+      y: 50,
+      date: test10,
+      id: 'testId10'
+    },
   },
   tasks: {
     taskId: {
-      name: 'Call Mom',
+      name: 'Call Dad',
       frequency: 'high',
-      energy: 'high',
+      energy: 'medium',
       set: test,
       reminders: 5,
       id: 'taskId'
     },
     taskId1: {
-      name: 'Call Mom',
-      frequency: 'high',
+      name: 'Buy New Sweater',
+      frequency: 'low',
       energy: 'high',
       set: test,
-      reminders: 5,
-      id: 'taskId'
+      reminders: 3,
+      id: 'taskId1'
     },
     taskId2: {
-      name: 'Call Mom',
+      name: 'Do Daily Writing',
       frequency: 'high',
-      energy: 'high',
+      energy: 'low',
       set: test,
-      reminders: 5,
-      id: 'taskId'
+      reminders: 15,
+      id: 'taskId2'
     },
     taskId3: {
-      name: 'Call Mom',
-      frequency: 'high',
+      name: 'Go To Meetup',
+      frequency: 'medium',
       energy: 'high',
       set: test,
-      reminders: 5,
-      id: 'taskId'
+      reminders: 1,
+      id: 'taskId3'
     },
     taskId4: {
-      name: 'Call Mom',
+      name: 'Hang Out with Bestie',
       frequency: 'high',
-      energy: 'high',
+      energy: 'medium',
       set: test,
       reminders: 5,
-      id: 'taskId'
+      id: 'taskId4'
     },
     taskId5: {
-      name: 'Call Mom',
+      name: 'Return Kim\'s Book',
       frequency: 'high',
-      energy: 'high',
+      energy: 'low',
       set: test,
       reminders: 5,
-      id: 'taskId'
+      id: 'taskId5'
     },
     taskId6: {
-      name: 'Call Mom',
-      frequency: 'high',
+      name: 'Read Atlas Shrugged',
+      frequency: 'low',
       energy: 'high',
       set: test,
-      reminders: 5,
-      id: 'taskId'
+      reminders: 3,
+      id: 'taskId6'
     },
     taskId7: {
-      name: 'Call Mom',
+      name: 'Meal Prep',
       frequency: 'high',
       energy: 'high',
       set: test,
       reminders: 5,
-      id: 'taskId'
+      id: 'taskId7'
     },
     taskId8: {
-      name: 'Call Mom',
+      name: 'Buy Batteries',
       frequency: 'high',
       energy: 'high',
       set: test,
@@ -122,100 +157,12 @@ export const initialState = {
       id: 'taskId'
     },
     taskId9: {
-      name: 'Call Mom',
-      frequency: 'high',
+      name: 'Clean Rain Gutters',
+      frequency: 'low',
       energy: 'high',
       set: test,
       reminders: 5,
       id: 'taskId'
-    },
-    taskId0: {
-      name: 'Call Mom',
-      frequency: 'high',
-      energy: 'high',
-      set: test,
-      reminders: 5,
-      id: 'taskId'
-    },
-    taskId11: {
-      name: 'Call Mom',
-      frequency: 'high',
-      energy: 'high',
-      set: test,
-      reminders: 5,
-      id: 'taskId'
-    },
-    taskId12: {
-      name: 'Call Mom',
-      frequency: 'high',
-      energy: 'high',
-      set: test,
-      reminders: 5,
-      id: 'taskId'
-    },
-    taskId13: {
-      name: 'Call Mom',
-      frequency: 'high',
-      energy: 'high',
-      set: test,
-      reminders: 5,
-      id: 'taskId'
-    },
-    taskId14: {
-      name: 'Call Mom',
-      frequency: 'high',
-      energy: 'high',
-      set: test,
-      reminders: 5,
-      id: 'taskId'
-    },
-    taskId15: {
-      name: 'Call Mom',
-      frequency: 'high',
-      energy: 'high',
-      set: test,
-      reminders: 5,
-      id: 'taskId'
-    },
-    taskId16: {
-      name: 'Call Mom',
-      frequency: 'high',
-      energy: 'high',
-      set: test,
-      reminders: 5,
-      id: 'taskId'
-    },
-    taskId17: {
-      name: 'Call Mom',
-      frequency: 'high',
-      energy: 'high',
-      set: test,
-      reminders: 5,
-      id: 'taskId'
-    },
-    taskId18: {
-      name: 'Call Mom',
-      frequency: 'high',
-      energy: 'high',
-      set: test,
-      reminders: 5,
-      id: 'taskId'
-    },
-    taskId19: {
-      name: 'Call Mom',
-      frequency: 'high',
-      energy: 'high',
-      set: test,
-      reminders: 5,
-      id: 'taskId'
-    },
-    taskId20: {
-      name: 'Call Mom',
-      frequency: 'high',
-      energy: 'high',
-      set: test,
-      reminders: 5,
-      id: 'taskId'
-    },
+    }
   }
 }
