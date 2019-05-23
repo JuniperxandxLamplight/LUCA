@@ -4,7 +4,7 @@ import UpkeepSliders from './UpkeepSliders';
 import UpkeepWelcome from './UpkeepWelcome';
 import UpkeepConfirmation from './UpkeepConfirmation';
 
-function UpkeepContainer(){
+function UpkeepContainer(props){
 
   let confirmation;
 
@@ -16,7 +16,7 @@ function UpkeepContainer(){
     <View>
       {confirmation}
       <UpkeepWelcome/>
-      <UpkeepSliders confirmationShow={confirmationShow}/>
+      <UpkeepSliders onUpdatePin={props.onUpdatePin} confirmationShow={confirmationShow}/>
     </View>
   );
 }

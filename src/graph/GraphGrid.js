@@ -5,10 +5,10 @@ import GraphDot from './GraphDot';
 import {connect} from 'react-redux';
 
 function GraphGrid(props){
+  console.log(props);
 
   return(
     <View>
-      <GraphView/>
       {Object.keys(props.state.pins).map((dot, index) =>
         <GraphDot
           key={index}
@@ -18,6 +18,7 @@ function GraphGrid(props){
           y={props.state.pins[dot].y}
         />
       )}
+      <GraphView/>
     </View>
   );
 }

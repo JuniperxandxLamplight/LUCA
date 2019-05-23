@@ -5,28 +5,45 @@ import GraphGrid from './GraphGrid';
 import UpkeepContainer from './../upkeep/UpkeepContainer';
 import {connect} from 'react-redux';
 
-function GraphContainer(props){
+class GraphContainer extends React.Component{
 
-  let graphShowing;
-  const now = new Moment();
-  const timeSinceLastPin = props.state.profile.lastPin.diff(now, 'hours');
-
-  if ((now.hour() > props.state.profile.pinTime && timeSinceLastPin < -8) || (timeSinceLastPin < -24)){
-    graphShowing = <UpkeepContainer/>
-  } else {
-    graphShowing = <GraphGrid/>
+  constructor(props){
+    super(props);
+    this.state = {
+      graphShowing: false
+    }
+    this.handleUpdatePin = this.handleUpdatePin.bind(this);
   }
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1
+  componentDidMount(){
+    const now = new Moment();
+    const timeSinceLastPin = this.props.state.profile.lastPin.diff(now, 'hours');
+
+    if ((now.hour() > this.props.state.profile.pinTime && timeSinceLastPin < -8) || (timeSinceLastPin < -24)){
+      this.setState({graphShowing: true});
     }
-  });
-  return(
-    <View style={styles.container}>
-      {graphShowing}
-    </View>
-  );
+  }
+
+  handleUpdatePin(){
+    this.setState({graphShowing: false});
+  }
+
+
+  render(){
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1
+      }
+    });
+    return(
+      <View style={styles.container}>
+        {this.state.graphShowing &&
+          <UpkeepContainer onUpdatePin={this.handleUpdatePin} />}
+            {!this.state.graphShowing &&
+              <GraphGrid />}
+              </View>
+            );
+  }
 }
 
 const mapStateToProps = state => {

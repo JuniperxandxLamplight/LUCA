@@ -12,7 +12,7 @@ function GraphDot(props){
   const widthPercent = Dimensions.get('window').width / 100;
   const width = 50 + days;
   const height = 50 + days;
-  const top = (heightPercent * props.y) - height;
+  const top = (heightPercent * props.y);
   const left = (widthPercent * props.x) - width;
   const opacity = (100 + (days * 3)) / 100;
 

@@ -1,7 +1,8 @@
 // text mixins
 
 export const body = {
-  fontFamily: 'quicksand',
+  textAlign: 'center',
+  fontFamily: 'PingFangSC-Light',
   fontSize: 20,
   color: '#007D0D'
 }

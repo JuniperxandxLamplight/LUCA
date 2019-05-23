@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Picker, TextInput, Button } from 'react-native';
+import {body} from './../constants/Mixins';
+
 
 class TaskEditForm extends React.Component{
 
@@ -37,16 +39,22 @@ class TaskEditForm extends React.Component{
   }
 
   render(){
-    console.log(this.props);
+
+    const styles = StyleSheet.create({
+      text: {
+        ...body
+      }
+    })
+
     return(
       <View>
-        <Text>Name</Text>
-        <TextInput
+        <Text style={styles.text}>Name</Text>
+        <Text style={styles.text}Input
           value={this.state.name}
           placeholder="Name of Task"
           onChangeText={value => this.nameSet(value)}
           />
-        <Text>Frequency of Reminders</Text>
+        <Text style={styles.text}>Frequency of Reminders</Text>
         <Picker
           selectedValue={this.state.frequency}
           onValueChange={value => this.frequencySet(value)}>
@@ -54,7 +62,7 @@ class TaskEditForm extends React.Component{
           <Picker.Item label="Medium" value="medium" />
           <Picker.Item label="Low" value="low" />
         </Picker>
-        <Text>Energy Required</Text>
+        <Text style={styles.text}>Energy Required</Text>
         <Picker
           selectedValue={this.state.energy}
           onValueChange={value => this.energySet(value)}>

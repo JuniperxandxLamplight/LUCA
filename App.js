@@ -12,17 +12,6 @@ import ScrapBookContainer from './src/scrapbook/ScrapBookContainer';
 import backDrop from './assets/background.png';
 
 export default class App extends React.Component {
-  state = {
-    fontLoaded: false
-  };
-
-  async componentDidMount(){
-    await Font.loadAsync({
-      'quicksand': require('./assets/fonts/Quicksand-Regular.ttf')
-    })
-
-    this.setState({fontLoaded: true});
-  }
 
 
   render() {
@@ -36,7 +25,6 @@ export default class App extends React.Component {
     const styles = StyleSheet.create({
       container: {
         flex: 1,
-        fontFamily: 'quicksand',
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
@@ -62,30 +50,26 @@ export default class App extends React.Component {
     return (
       <NativeRouter>
         <Provider store={store}>
-          {
-            this.state.fontLoaded ? (
-              <View style={styles.container}>
-                <ImageBackground source={backDrop} style={{width: '100%', height: '100%'}}>
-                  <View style={styles.body}>
-                    <Route exact path="/" component={GraphContainer} />
-                    <Route path="/tasks" component={TaskContainer} />
-                    <Route path="/scrapbook" component={ScrapBookContainer} />
-                  </View>
-                  <View style={styles.navBar}>
-                    <Link to="/">
-                      <Nav/>
-                    </Link>
-                    <Link to="/tasks">
-                      <Nav/>
-                    </Link>
-                    <Link to="/scrapbook">
-                      <Nav/>
-                    </Link>
-                  </View>
-                </ImageBackground>
-              </View>
-            ) : null
-          }
+            <View style={styles.container}>
+              <ImageBackground source={backDrop} style={{width: '100%', height: '100%'}}>
+                <View style={styles.body}>
+                  <Route exact path="/" component={GraphContainer} />
+                  <Route path="/tasks" component={TaskContainer} />
+                  <Route path="/scrapbook" component={ScrapBookContainer} />
+                </View>
+                <View style={styles.navBar}>
+                  <Link to="/">
+                    <Nav/>
+                  </Link>
+                  <Link to="/tasks">
+                    <Nav/>
+                  </Link>
+                  <Link to="/scrapbook">
+                    <Nav/>
+                  </Link>
+                </View>
+              </ImageBackground>
+            </View>
         </Provider>
       </NativeRouter>
     );

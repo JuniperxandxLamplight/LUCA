@@ -5,6 +5,8 @@ import Moment from 'moment';
 import {setPin} from './../constants/Actions';
 import {v4} from 'uuid';
 import Slider from 'react-native-slider';
+import {body} from './../constants/Mixins';
+
 
 function UpkeepSliders(props){
 
@@ -21,11 +23,15 @@ function UpkeepSliders(props){
   function handleSetPin(){
     const now = new Moment();
     const id = v4();
-    props.dispatch(setPin(energy, mood, now, id));
+    props.dispatch(setPin(mood, energy, now, id));
+    props.onUpdatePin();
     // props.confirmationShow();
   }
 
   const styles = StyleSheet.create({
+    text: {
+      ...body
+    },
     slider: {
       width: 200,
       height: 50,
@@ -33,7 +39,7 @@ function UpkeepSliders(props){
   })
   return(
     <View>
-      <Text>Energy</Text>
+      <Text style={styles.text}>Energy</Text>
       <Slider
         style={styles.slider}
         value={50}
@@ -44,7 +50,7 @@ function UpkeepSliders(props){
         maximumTrackTintColor="#000000"
         thumbTintColor="#FFFFFF"
       />
-      <Text>Mood</Text>
+      <Text style={styles.text}>Mood</Text>
       <Slider
         style={styles.slider}
         value={50}

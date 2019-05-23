@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import {connect} from 'react-redux';
 import TaskEditForm from './TaskEditForm';
 import {editTask, deleteTask} from './../constants/Actions';
+import {body} from './../constants/Mixins';
+
 
 class TaskEdit extends React.Component{
 
@@ -38,6 +40,13 @@ class TaskEdit extends React.Component{
   }
 
   render(){
+
+    const styles = StyleSheet.create({
+      text: {
+        ...body
+      }
+    })
+
     return(
       <View>
         {!this.state.deleteConfirmation &&
@@ -54,7 +63,7 @@ class TaskEdit extends React.Component{
         }
         {this.state.deleteConfirmation &&
         <View>
-          <Text>Are you sure you want to delete this task?</Text>
+          <Text style={styles.text}>Are you sure you want to delete this task?</Text>
           <Button onPress={this.deleteTask} title="Yes please" />
           <Button onPress={this.deleteQuestionToggle} title="Actually, no thanks" />
         </View>}

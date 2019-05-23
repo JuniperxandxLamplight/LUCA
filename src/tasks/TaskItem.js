@@ -28,18 +28,19 @@ class TaskItem extends React.Component{
   render(){
 
     const styles = StyleSheet.create({
-      container: {
-        ...body
+      text: {
+        ...body 
       }
     })
+
     return(
       <View >
-        <Text onPress={this.handleOpenDetails} style={{fontSize: 30}}>{this.props.name}</Text>
+        <Text style={styles.text} onPress={this.handleOpenDetails} style={{fontSize: 30}}>{this.props.name}</Text>
         {this.state.detailsOpen &&
           <View>
-            <Text style={styles.container}>Frequency: {this.props.frequency}</Text>
-            <Text>Energy: {this.props.energy}</Text>
-            <Text>Reminders to Date: {this.props.reminders}</Text>
+            <Text style={styles.text}>Frequency: {this.props.frequency}</Text>
+            <Text style={styles.text}>Energy: {this.props.energy}</Text>
+            <Text style={styles.text}>Reminders to Date: {this.props.reminders}</Text>
             <Button onPress={this.handleSendEdit} title="Edit" />
           </View>
         }
