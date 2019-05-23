@@ -5,7 +5,7 @@ import Moment from 'moment';
 import {setPin} from './../constants/Actions';
 import {v4} from 'uuid';
 import Slider from 'react-native-slider';
-import {body} from './../constants/Mixins';
+import {body, button} from './../constants/Mixins';
 
 
 function UpkeepSliders(props){
@@ -31,11 +31,10 @@ function UpkeepSliders(props){
   const styles = StyleSheet.create({
     text: {
       ...body,
-      marginTop: 20,
-      marginBottom: 10
+      marginTop: 20
     },
     slider: {
-      width: 300,
+      width: '80%',
       height: 50,
       marginLeft: 'auto',
       marginRight: 'auto'
@@ -48,8 +47,11 @@ function UpkeepSliders(props){
     markers: {
       ...body,
       fontSize: 15,
-      paddingLeft: 50,
-      paddingRight: 50
+      paddingLeft: '10%',
+      paddingRight: '10%'
+    },
+    buttonHolder: {
+      ...button
     }
   })
   return(
@@ -84,7 +86,9 @@ function UpkeepSliders(props){
         <Text style={styles.markers}>Low</Text>
         <Text style={styles.markers}>High</Text>
       </View>
-      <Button color="#914EFF" onPress={handleSetPin} title="Done"/>
+      <View style={styles.buttonHolder}>
+        <Button color="#914EFF" onPress={handleSetPin} title="Done"/>
+      </View>
     </View>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import {body} from './../constants/Mixins';
+import {body, button} from './../constants/Mixins';
 
 class TaskItem extends React.Component{
 
@@ -29,19 +29,49 @@ class TaskItem extends React.Component{
 
     const styles = StyleSheet.create({
       text: {
-        ...body
+        ...body,
+        textAlign: 'left',
+        marginLeft: 20
+      },
+      buttonHolder: {
+        ...button,
+      },
+      header: {
+        ...body,
+        fontSize: 30,
+        textAlign: 'left',
+      },
+      card: {
+        width: '90%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginBottom: 10,
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#007D0D',
+        borderRadius: 15
+      },
+      details: {
+        borderTopWidth: 1,
+        borderColor: '#007D0D'
+      },
+      buttonHolder: {
+        ...button,
+        marginBottom: 5
       }
     })
 
     return(
-      <View >
-        <Text style={styles.text} onPress={this.handleOpenDetails} style={{fontSize: 30}}>{this.props.name}</Text>
+      <View style={styles.card}>
+        <Text style={styles.header} onPress={this.handleOpenDetails}>{this.props.name}</Text>
         {this.state.detailsOpen &&
-          <View>
+          <View style={styles.details}>
             <Text style={styles.text}>Frequency: {this.props.frequency}</Text>
             <Text style={styles.text}>Energy: {this.props.energy}</Text>
             <Text style={styles.text}>Reminders to Date: {this.props.reminders}</Text>
-            <Button color="#914EFF" onPress={this.handleSendEdit} title="Edit" />
+            <View style={styles.buttonHolder}>
+              <Button color="#914EFF" onPress={this.handleSendEdit} title="Edit" />
+            </View>
           </View>
         }
       </View>
