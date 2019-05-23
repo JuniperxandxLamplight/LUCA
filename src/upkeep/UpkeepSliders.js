@@ -68,8 +68,8 @@ function UpkeepSliders(props){
         thumbTintColor="#c7a5ff"
       />
       <View style={styles.markerContainer}>
-        <Text style={styles.markers}>Low</Text>
-        <Text style={styles.markers}>High</Text>
+        <Text style={styles.markers}>Tired</Text>
+        <Text style={styles.markers}>Energetic</Text>
       </View>
       <Text style={styles.text}>Mood</Text>
       <Slider
@@ -83,8 +83,8 @@ function UpkeepSliders(props){
         thumbTintColor="#c7a5ff"
         />
       <View style={styles.markerContainer}>
-        <Text style={styles.markers}>Low</Text>
-        <Text style={styles.markers}>High</Text>
+        <Text style={styles.markers}>Well</Text>
+        <Text style={styles.markers}>Lousy</Text>
       </View>
       <View style={styles.buttonHolder}>
         <Button color="#914EFF" onPress={handleSetPin} title="Done"/>
