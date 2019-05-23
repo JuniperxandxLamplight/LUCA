@@ -9,12 +9,19 @@ function ScrapBookContainer(){
     },
     image: {
       flex: 1,
-      resizeMode: 'contain'
+      width: 375,
+      height: 30
+    },
+    imageHolder: {
+      flex: 1,
+      backgroundColor: 'rgba(0, 170, 204, .35)'
     }
   })
   return(
     <View style={styles.container}>
-      <Image style={styles.image} source={construction} />
+      <Text style={styles.imageHolder}>
+        <Image style={styles.image} source={construction} />
+      </Text>
     </View>
   );
 }

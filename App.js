@@ -27,23 +27,22 @@ export default class App extends React.Component {
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 15
+        justifyContent: 'center'
       },
       body: {
         flex: 9,
-        borderWidth: 1,
-        borderColor: 'black'
+        marginTop: 15
       },
       navBar: {
         flex: 1,
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        backgroundColor: '#43FFFF'
       },
       backDrop: {
         flex: 1,
-        zIndex: -15,
+        zIndex: -15
       }
     });
 
@@ -59,13 +58,13 @@ export default class App extends React.Component {
                 </View>
                 <View style={styles.navBar}>
                   <Link to="/">
-                    <Nav/>
+                    <Nav image={'rose'}/>
                   </Link>
                   <Link to="/tasks">
-                    <Nav/>
+                    <Nav image={'task'}/>
                   </Link>
                   <Link to="/scrapbook">
-                    <Nav/>
+                    <Nav image={'book'}/>
                   </Link>
                 </View>
               </ImageBackground>

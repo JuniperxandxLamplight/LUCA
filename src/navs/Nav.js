@@ -1,10 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import roseNav from './../../assets/roseNav.png';
+import taskNav from './../../assets/taskNav.png';
+import bookNav from './../../assets/bookNav.png';
 
-function Nav() {
+function Nav(props) {
+
+  let image;
+  if (props.image === 'rose'){
+    image = roseNav;
+  } else if (props.image === 'task'){
+    image = taskNav;
+  } else {
+    image = bookNav;
+  }
+
   return(
     <View style={styles.container}>
-      <Text style={styles.button}>I'm a nav button!</Text>
+      <Image source={image} />
     </View>
   );
 }
@@ -15,8 +28,6 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: 'black',
     textAlign: 'center'
   }
 })
