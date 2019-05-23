@@ -58,14 +58,14 @@ class TaskEdit extends React.Component{
               taskEnergy={this.props.state.tasks[this.props.taskId].energy}
               sendData={this.gatherDataFromForm}
               />
-            <Button onPress={this.deleteQuestionToggle} title="Delete This Task" />
+            <Button color="#914EFF" onPress={this.deleteQuestionToggle} title="Delete This Task" />
           </View>
         }
         {this.state.deleteConfirmation &&
         <View>
           <Text style={styles.text}>Are you sure you want to delete this task?</Text>
-          <Button onPress={this.deleteTask} title="Yes please" />
-          <Button onPress={this.deleteQuestionToggle} title="Actually, no thanks" />
+          <Button color="#914EFF" onPress={this.deleteTask} title="Yes please" />
+          <Button color="#914EFF" onPress={this.deleteQuestionToggle} title="Actually, no thanks" />
         </View>}
         </View>
       );

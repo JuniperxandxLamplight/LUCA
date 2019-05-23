@@ -12,8 +12,15 @@ function UpkeepContainer(props){
     confirmation = <UpkeepConfirmation/>
   }
 
+  const styles = StyleSheet.create({
+    container: {
+      marginTop: 'auto',
+      marginBottom: 'auto'
+    }
+  })
+
   return(
-    <View>
+    <View style={styles.container}>
       {confirmation}
       <UpkeepWelcome/>
       <UpkeepSliders onUpdatePin={props.onUpdatePin} confirmationShow={confirmationShow}/>

@@ -29,7 +29,7 @@ class TaskItem extends React.Component{
 
     const styles = StyleSheet.create({
       text: {
-        ...body 
+        ...body
       }
     })
 
@@ -41,7 +41,7 @@ class TaskItem extends React.Component{
             <Text style={styles.text}>Frequency: {this.props.frequency}</Text>
             <Text style={styles.text}>Energy: {this.props.energy}</Text>
             <Text style={styles.text}>Reminders to Date: {this.props.reminders}</Text>
-            <Button onPress={this.handleSendEdit} title="Edit" />
+            <Button color="#914EFF" onPress={this.handleSendEdit} title="Edit" />
           </View>
         }
       </View>

@@ -30,11 +30,26 @@ function UpkeepSliders(props){
 
   const styles = StyleSheet.create({
     text: {
-      ...body
+      ...body,
+      marginTop: 20,
+      marginBottom: 10
     },
     slider: {
-      width: 200,
+      width: 300,
       height: 50,
+      marginLeft: 'auto',
+      marginRight: 'auto'
+    },
+    markerContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between'
+    },
+    markers: {
+      ...body,
+      fontSize: 15,
+      paddingLeft: 50,
+      paddingRight: 50
     }
   })
   return(
@@ -46,10 +61,14 @@ function UpkeepSliders(props){
         onValueChange={value => energySet(value)}
         minimumValue={1}
         maximumValue={100}
-        minimumTrackTintColor="#FFFFFF"
-        maximumTrackTintColor="#000000"
-        thumbTintColor="#FFFFFF"
+        minimumTrackTintColor="#914EFF"
+        maximumTrackTintColor="lightgray"
+        thumbTintColor="#c7a5ff"
       />
+      <View style={styles.markerContainer}>
+        <Text style={styles.markers}>Low</Text>
+        <Text style={styles.markers}>High</Text>
+      </View>
       <Text style={styles.text}>Mood</Text>
       <Slider
         style={styles.slider}
@@ -57,11 +76,15 @@ function UpkeepSliders(props){
         onValueChange={value => moodSet(value)}
         minimumValue={1}
         maximumValue={100}
-        minimumTrackTintColor="#FFFFFF"
-        maximumTrackTintColor="#000000"
-        thumbTintColor="#FFFFFF"
+        minimumTrackTintColor="#914EFF"
+        maximumTrackTintColor="lightgray"
+        thumbTintColor="#c7a5ff"
         />
-      <Button onPress={handleSetPin} title="Done"/>
+      <View style={styles.markerContainer}>
+        <Text style={styles.markers}>Low</Text>
+        <Text style={styles.markers}>High</Text>
+      </View>
+      <Button color="#914EFF" onPress={handleSetPin} title="Done"/>
     </View>
   );
 }

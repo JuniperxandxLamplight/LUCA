@@ -32,7 +32,7 @@ function TaskList(props){
           onOpenEditor={props.onOpenEditor}
         />
       )}
-      <Button onPress={openAddTask} title="Add Task"/>
+      <Button color="#914EFF" onPress={openAddTask} title="Add Task"/>
     </View>
   );
 }

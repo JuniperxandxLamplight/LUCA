@@ -70,7 +70,7 @@ class TaskEditForm extends React.Component{
           <Picker.Item label="Medium" value="medium" />
           <Picker.Item label="Low" value="low" />
         </Picker>
-        <Button onPress={this.sendData} title="Done"/>
+        <Button color="#914EFF" onPress={this.sendData} title="Done"/>
       </View>
     );
   }
